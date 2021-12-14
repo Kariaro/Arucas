@@ -275,16 +275,16 @@ public class ArucasBuiltInExtension implements IArucasExtension {
 
 	private Value<?> cosec(Context context, BuiltInFunction function) throws CodeError {
 		NumberValue numberValue = function.getParameterValueOfType(context, NumberValue.class, 0);
-		return new NumberValue(1/Math.sin(numberValue.value));
+		return new NumberValue(1 / Math.sin(numberValue.value));
 	}
 
 	private Value<?> sec(Context context, BuiltInFunction function) throws CodeError {
 		NumberValue numberValue = function.getParameterValueOfType(context, NumberValue.class, 0);
-		return new NumberValue(1/Math.cos(numberValue.value));
+		return new NumberValue(1 / Math.cos(numberValue.value));
 	}
 
 	private Value<?> cot(Context context, BuiltInFunction function) throws CodeError {
 		NumberValue numberValue = function.getParameterValueOfType(context, NumberValue.class, 0);
-		return new NumberValue(1/Math.tan(numberValue.value));
+		return new NumberValue(1 / Math.tan(numberValue.value));
 	}
 }

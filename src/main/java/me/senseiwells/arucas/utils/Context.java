@@ -5,6 +5,7 @@ import me.senseiwells.arucas.api.IArucasOutput;
 import me.senseiwells.arucas.api.IArucasValueExtension;
 import me.senseiwells.arucas.api.ISyntax;
 import me.senseiwells.arucas.values.Value;
+import me.senseiwells.arucas.values.classes.ArucasClassDefinition;
 import me.senseiwells.arucas.values.functions.AbstractBuiltInFunction;
 import me.senseiwells.arucas.values.functions.MemberFunction;
 
@@ -179,6 +180,14 @@ public class Context {
 		if (!this.suppressDeprecated) {
 			this.getOutput().print(message);
 		}
+	}
+	
+	public ArucasClassDefinition getClassDefinition(String name) {
+		return this.stackTable.getClassDefinition(name);
+	}
+	
+	public void addClassDefinition(ArucasClassDefinition definition) {
+		this.stackTable.addClassDefinition(definition);
 	}
 
 	public AbstractBuiltInFunction<?> getBuiltInFunction(String methodName, int parameters) {

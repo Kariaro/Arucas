@@ -11,9 +11,9 @@ import me.senseiwells.arucas.values.Value;
 import java.util.List;
 
 public class UserDefinedFunction extends FunctionValue {
-	private Node bodyNode;
+	protected Node bodyNode;
 
-	public UserDefinedFunction(String name, ISyntax syntaxPosition, List<String> argumentNames) {
+	public UserDefinedFunction(String name, List<String> argumentNames, ISyntax syntaxPosition) {
 		super(name, syntaxPosition, argumentNames, false);
 	}
 	

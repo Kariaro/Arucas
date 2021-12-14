@@ -99,6 +99,10 @@ public class Token {
 		SWITCH,
 		CASE,
 		DEFAULT,
+		CLASS,
+		THIS,
+		NEW,
+		STATIC,
 
 		// Dot
 		DOT,

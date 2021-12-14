@@ -81,6 +81,6 @@ public class NumberValue extends Value<Double> {
 	
 	@Override
 	public String toString() {
-		return DECIMAL_FORMAT.format(this.value);
+		return NumberValue.DECIMAL_FORMAT.format(this.value);
 	}
 }

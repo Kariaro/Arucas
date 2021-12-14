@@ -31,8 +31,10 @@ public class MapValue extends Value<ArucasValueMap> {
 			sb.append(", ").append(StringUtils.toPlainString(value1))
 			  .append(" : ").append(StringUtils.toPlainString(value2))
 		);
-		sb.deleteCharAt(0);
-
+		if (sb.length() > 0) {
+			sb.deleteCharAt(0);
+		}
+		
 		return "{%s}".formatted(sb.toString().trim());
 	}
 }

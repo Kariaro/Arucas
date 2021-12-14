@@ -9,8 +9,10 @@ public abstract class Value<T> implements ValueOperations {
 		this.value = value;
 	}
 	
+	// Shallow copy
 	public abstract Value<T> copy();
 
+	// Deep copy
 	public Value<T> newCopy() {
 		return this.copy();
 	}

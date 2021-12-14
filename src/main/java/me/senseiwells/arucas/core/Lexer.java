@@ -86,6 +86,10 @@ public class Lexer {
 			.addRule(Type.SWITCH, i -> i.addString("switch"))
 			.addRule(Type.CASE, i -> i.addString("case"))
 			.addRule(Type.DEFAULT, i -> i.addString("default"))
+			.addRule(Type.CLASS, i -> i.addString("class"))
+			.addRule(Type.THIS, i -> i.addString("this"))
+			.addRule(Type.NEW, i -> i.addString("new"))
+			.addRule(Type.STATIC, i -> i.addString("static"))
 
 			// Dot operator
 			.addRule(Type.DOT, i -> i.addString("."))

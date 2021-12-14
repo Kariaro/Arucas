@@ -11,19 +11,23 @@ import java.util.List;
 
 public class FunctionNode extends Node {
 	private final Token variableNameToken;
-	public UserDefinedFunction functionValue;
+	private final UserDefinedFunction functionValue;
 
 	public FunctionNode(Token functionToken, Token varNameToken, List<String> argumentNames) {
 		super(varNameToken, new MutableSyntaxImpl(varNameToken.syntaxPosition.getStartPos(), null));
 		this.variableNameToken = varNameToken;
-		this.functionValue = new UserDefinedFunction(varNameToken.content, functionToken.syntaxPosition, argumentNames);
+		this.functionValue = new UserDefinedFunction(varNameToken.content, argumentNames, functionToken.syntaxPosition);
 	}
 	
 	public void complete(Node bodyNode) {
 		// Because recursive calls need access to the this node before
-		// it's complete we need to initialize some values later.
+		// it's complete we need to initialize some values later
 		((MutableSyntaxImpl) this.syntaxPosition).end = bodyNode.syntaxPosition.getEndPos();
 		this.functionValue.complete(bodyNode);
+	}
+	
+	public UserDefinedFunction getFunctionValue() {
+		return this.functionValue;
 	}
 
 	@Override

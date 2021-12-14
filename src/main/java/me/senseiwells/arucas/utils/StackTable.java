@@ -2,11 +2,13 @@ package me.senseiwells.arucas.utils;
 
 import me.senseiwells.arucas.api.ISyntax;
 import me.senseiwells.arucas.values.Value;
+import me.senseiwells.arucas.values.classes.ArucasClassDefinition;
 
 import java.util.*;
 
 public class StackTable {
 	protected final Map<String, Value<?>> symbolMap;
+	protected final Map<String, ArucasClassDefinition> classDefinitions;
 	private final StackTable parentTable;
 	private final ISyntax syntaxPosition;
 	
@@ -16,6 +18,7 @@ public class StackTable {
 	
 	public StackTable(StackTable parent, ISyntax syntaxPosition, boolean canBreak, boolean canContinue, boolean canReturn) {
 		this.symbolMap = new HashMap<>();
+		this.classDefinitions = new HashMap<>();
 		this.parentTable = parent;
 		this.syntaxPosition = syntaxPosition;
 		this.canContinue = canContinue;
@@ -84,6 +87,19 @@ public class StackTable {
 		}
 		
 		return null;
+	}
+	
+	public ArucasClassDefinition getClassDefinition(String name) {
+		ArucasClassDefinition definition = this.classDefinitions.get(name);
+		if (definition != null) {
+			return definition;
+		}
+		
+		return this.parentTable != null ? this.parentTable.getClassDefinition(name) : null;
+	}
+	
+	public void addClassDefinition(ArucasClassDefinition definition) {
+		this.classDefinitions.put(definition.getName(), definition);
 	}
 	
 	/**
